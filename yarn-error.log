@@ -1,0 +1,32 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\vijaya\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install dev babel
+
+PATH: 
+  C:\ProgramData\Oracle\Java\javapath;C:\oracle\ora92\bin\;C:\Program Files (x86)\Oracle\jre\1.1.8\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Box\Box Edit\;C:\Program Files\PuTTY\;C:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\DataCash\ATS\;C:\Users\vijaya\AppData\Local\atom\bin;C:\Users\vijaya\AppData\Roaming\npm;C:\Program Files\Heroku\bin;C:\Program Files\Microsoft VS Code\bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.2.1
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: `install` has been replaced with `add` to add new dependencies. Run "yarn add dev babel" instead.
+      at new MessageError (C:\Users\vijaya\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:186:110)
+      at Object.<anonymous> (C:\Users\vijaya\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:21987:13)
+      at Generator.next (<anonymous>)
+      at step (C:\Users\vijaya\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:98:30)
+      at C:\Users\vijaya\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:109:13
+      at <anonymous>

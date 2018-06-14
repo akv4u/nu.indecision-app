@@ -1,0 +1,6 @@
+npm -g install live-server
+npm -g install babel-cli
+yarn add babel-preset-react babel-preset-env
+babel src/app.js --out-file=public/scripts/app.js --presets=react,env
+Note above
+babel src/app.js --out-file=public/scripts/app.js --presets=react --watch
