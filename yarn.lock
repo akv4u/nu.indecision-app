@@ -314,7 +314,7 @@ babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-core@^6.26.0:
+babel-core@^6.26.0, babel-core@^6.26.3:
   version "6.26.3"
   resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/babel-core/-/babel-core-6.26.3.tgz#b2e2f09e342d0f0c88e2f02e067794125e75c207"
   dependencies:
@@ -459,6 +459,14 @@ babel-helpers@^6.24.1:
   dependencies:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
+
+babel-loader@^7.1.4:
+  version "7.1.4"
+  resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/babel-loader/-/babel-loader-7.1.4.tgz#e3463938bd4e6d55d1c174c5485d406a188ed015"
+  dependencies:
+    find-cache-dir "^1.0.0"
+    loader-utils "^1.0.2"
+    mkdirp "^0.5.1"
 
 babel-messages@^6.23.0:
   version "6.23.0"
@@ -2278,7 +2286,7 @@ loader-runner@^2.3.0:
   version "2.3.0"
   resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
 
-loader-utils@^1.1.0:
+loader-utils@^1.0.2, loader-utils@^1.1.0:
   version "1.1.0"
   resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/loader-utils/-/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
   dependencies:
@@ -2985,9 +2993,18 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react@^16.4.0:
-  version "16.4.0"
-  resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/react/-/react-16.4.0.tgz?dl=https://registry.yarnpkg.com/react/-/react-16.4.0.tgz#402c2db83335336fba1962c08b98c6272617d585"
+react-dom@^16.4.1:
+  version "16.4.1"
+  resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/react-dom/-/react-dom-16.4.1.tgz#7f8b0223b3a5fbe205116c56deb85de32685dad6"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
+react@^16.4.1:
+  version "16.4.1"
+  resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -3664,6 +3681,10 @@ v8flags@^2.1.1:
   resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/v8flags/-/v8flags-2.1.1.tgz#aab1a1fa30d45f88dd321148875ac02c0b55e5b4"
   dependencies:
     user-home "^1.1.1"
+
+validator@^10.3.0:
+  version "10.3.0"
+  resolved "https://eurostar.jfrog.io/eurostar/api/npm/npm/validator/-/validator-10.3.0.tgz#157a8c0981858cff381f59aabcdb8f83b57317cc"
 
 vary@^1:
   version "1.1.2"
