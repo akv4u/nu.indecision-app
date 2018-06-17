@@ -18,9 +18,8 @@ class Counter extends React.Component {
     }
   }
 
-  componentDidUpdate(props, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     console.log('componentDidUpdate')
-
     // if there is a change in count, store it
     if (this.state.count !== prevState.count) {
       console.log ('Saving count changes visa componentDidUpdate')
