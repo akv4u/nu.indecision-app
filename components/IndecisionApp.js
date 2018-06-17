@@ -5,18 +5,50 @@ import Action  from './Action.js'
 import Options from './Options.js'
 import AddOption from './AddOption.js'
 
+// Changing App to class-properties syntax
+
 export default class IndicisionApp extends React.Component {
-    constructor(props) {
-        super(props)
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
-        this.handleRandomSelect = this.handleRandomSelect.bind(this)
-        this.handleAddOption = this.handleAddOption.bind(this)
-        this.handleDeleteOption = this.handleDeleteOption.bind(this)
-        this.state = {
-            options:[]
-        }
+    state = {
+        options:[]
     }
     
+    handleDeleteOption = (optionToRemove) => {
+        this.setState((prevState) => ({
+            options: prevState.options.filter((option) => optionToRemove != option)
+        }));
+    }
+    
+    handleRandomSelect = () => {
+        const randIdx = Math.floor(Math.random()*this.state.options.length)
+        alert(this.state.options[randIdx])
+    }
+    
+    handleDeleteOptions = () => {
+        this.setState(() => {
+            return {
+                options:[]
+            }
+        })
+        
+        //
+        // this.setState(() => {options:[]})
+    }
+    
+    handleAddOption = (option) => {
+        if (!option) {
+            return 'Enter valid value to add item'
+        }
+        else if (this.state.options.indexOf(option) > -1) {
+            return 'This option already exist'
+        }
+        this.setState((prevState) => {
+            return {
+                options:prevState.options.concat(option)
+            }
+        })
+    }
+
+
     // React Lifecycle methods. These are only fired for ClassBased component
     // and are not available for "Stateless functional components"
     componentDidMount() {
@@ -44,41 +76,6 @@ export default class IndicisionApp extends React.Component {
         console.log ('component will unmount!')
     }
     
-    handleDeleteOption (optionToRemove) {
-        this.setState((prevState) => ({
-            options: prevState.options.filter((option) => optionToRemove != option)
-        }));
-    }
-    
-    handleRandomSelect() {
-        const randIdx = Math.floor(Math.random()*this.state.options.length)
-        alert(this.state.options[randIdx])
-    }
-    
-    handleDeleteOptions() {
-        this.setState(() => {
-            return {
-                options:[]
-            }
-        })
-        
-        //
-        // this.setState(() => {options:[]})
-    }
-    
-    handleAddOption(option) {
-        if (!option) {
-            return 'Enter valid value to add item'
-        }
-        else if (this.state.options.indexOf(option) > -1) {
-            return 'This option already exist'
-        }
-        this.setState((prevState) => {
-            return {
-                options:prevState.options.concat(option)
-            }
-        })
-    }
     
     
     render() {
