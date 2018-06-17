@@ -4,12 +4,18 @@ import Header from './Header.js'
 import Action  from './Action.js'
 import Options from './Options.js'
 import AddOption from './AddOption.js'
+import OptionModal from './OptionModal.js'
 
 // Changing App to class-properties syntax
 
 export default class IndicisionApp extends React.Component {
     state = {
-        options:[]
+        options:[],
+        selectedOption: undefined
+    }
+
+    handleClearSelection = () => {
+        this.setState(() => ({selectedOption: undefined}))
     }
     
     handleDeleteOption = (optionToRemove) => {
@@ -20,7 +26,10 @@ export default class IndicisionApp extends React.Component {
     
     handleRandomSelect = () => {
         const randIdx = Math.floor(Math.random()*this.state.options.length)
-        alert(this.state.options[randIdx])
+        const option = this.state.options[randIdx];
+        this.setState (() => ({
+            selectedOption: option
+        }))
     }
     
     handleDeleteOptions = () => {
@@ -94,6 +103,11 @@ export default class IndicisionApp extends React.Component {
             />
             <AddOption 
             handleAddOption={this.handleAddOption}
+            />
+            
+            <OptionModal 
+                selectedOption={this.state.selectedOption}
+                handleClearSelection={this.handleClearSelection}
             />
             </div>
         );
