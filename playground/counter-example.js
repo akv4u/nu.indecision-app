@@ -8,6 +8,26 @@ class Counter extends React.Component {
       count: 0
     };
   }
+
+// Using reach lifecycle methods
+  componentDidMount() {
+    console.log('componentDidMount')
+    let count = parseInt(localStorage.getItem('count'), 10);
+    if (!isNaN(count)) {
+      this.setState(() => ({count}));
+    }
+  }
+
+  componentDidUpdate(props, prevState) {
+    console.log('componentDidUpdate')
+
+    // if there is a change in count, store it
+    if (this.state.count !== prevState.count) {
+      console.log ('Saving count changes visa componentDidUpdate')
+      localStorage.setItem ('count', this.state.count);
+    }
+  }
+
   handleAddOne () {
     this.setState((prevState) => {
       return { // Only updates the value provided, keeps rest of the object as is.

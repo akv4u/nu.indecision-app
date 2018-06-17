@@ -4,11 +4,45 @@ class IndicisionApp extends React.Component {
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
     this.handleRandomSelect = this.handleRandomSelect.bind(this)
     this.handleAddOption = this.handleAddOption.bind(this)
+    this.handleDeleteOption = this.handleDeleteOption.bind(this)
     this.state = {
       options:[]
     }
   }
+
+  // React Lifecycle methods. These are only fired for ClassBased component
+  // and are not available for "Stateless functional components"
+  componentDidMount() {
+    console.log ('componentDidMount');
+    try { // <= to catch any parsing error
+      const json = localStorage.getItem('options')
+      const options = JSON.parse (json)
+      if (options) {
+        this.setState(() => ({options}));
+      }
+    } catch (e) {
+      // do nothing
+    }
+  }
+  componentDidUpdate(prevPros, prevState) {
+    console.log ('componentDidUpdate');
+    if (prevState.options.length !== this.state.options.length) {
+      console.log ('componentDidUpdate: savind data');
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem('options', json);
+    }
+  }
+
+  componentWillUnmount (){
+    console.log ('component will unmount!')
+  }
   
+  handleDeleteOption (optionToRemove) {
+    this.setState((prevState) => ({
+        options: prevState.options.filter((option) => optionToRemove != option)
+    }));
+  }
+    
   handleRandomSelect() {
     const randIdx = Math.floor(Math.random()*this.state.options.length)
     alert(this.state.options[randIdx])
@@ -50,8 +84,9 @@ class IndicisionApp extends React.Component {
       handleRandomSelect={this.handleRandomSelect}
       />
       <Options 
-      options={this.state.options}
-      handleDeleteOptions={this.handleDeleteOptions}
+        options={this.state.options}
+        handleDeleteOptions={this.handleDeleteOptions}
+        handleDeleteOption={this.handleDeleteOption}
       />
       <AddOption 
       handleAddOption={this.handleAddOption}
@@ -76,87 +111,60 @@ const Header = (props) => {
 Header.defaultProps = {
   title: 'Indecision'
 }
-// class Header extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <h1>{this.props.title}</h1>
-//         <h2>{this.props.subtitle}</h2>
-//       </div>
-//     );
-//   }
-// }
+
 
 const Action = (props) => {
   return (
     <div>
     <button 
-    onClick={props.handleRandomSelect}
-    disabled={!props.hasOptions}
+      onClick={props.handleRandomSelect}
+      disabled={!props.hasOptions}
     >What should I do</button>
     </div>
   )
 }
 
-// Class Based component (see above stateless functional component)
-// class Action extends React.Component {
-//   render () {
-//     return (
-//       <div>
-//         <button 
-//             onClick={this.props.handleRandomSelect}
-//             disabled={!this.props.hasOptions}
-//         >What should I do</button>
-//       </div>
-//     )
-//   }
-// }
+
 
 const Options = (props) => {
   return (
     <div>
-    <button onClick={props.handleDeleteOptions}>Remove All</button>
-    {props.options.map((option) => <Option option={option}/>)}
-    <Option />
+    {
+        <button 
+          onClick={props.handleDeleteOptions}
+          disabled={props.options.length == 0}
+        >Remove All
+        </button>
+    }
+    {props.options.length === 0 && <p>Add an option to get started!</p>}
+    {
+      props.options.map((option) => (
+        <Option 
+          key={option}
+          optionText={option}
+          handleDeleteOption={props.handleDeleteOption}
+        />
+     ))
+    }
     </div>
   )
 }
 
 
-// class Options extends React.Component {
-//   render () {
-//     return (
-//       <div>
-//       <button onClick={this.props.handleDeleteOptions}>Remove All</button>
-//       {this.props.options.map((option) => <Option option={option}/>)}
-//       <Option />
-//       </div>
-//     )
-//   }
-// }
-
 const Option = (props) => {
   return (
     <div>
-    {props.option && 
-      <li key={props.option}>{props.option}</li>}
+      {props.optionText} 
+      <button 
+        onClick={(e) => props.handleDeleteOption(props.optionText)}
+      >
+        <b>X</b>
+      </button>
       </div>
     );
-    
+   
   }
-  
-  
-  // class Option extends React.Component {
-  //     render () {
-  //         return (
-  //             <div>
-  //                 {this.props.option && 
-  //                 <li key={this.props.option}>{this.props.option}</li>}
-  //             </div>
-  //         );
-  //     }
-  // }
-  
+
   class AddOption extends React.Component {
     constructor(props) {
       super(props)
@@ -170,9 +178,7 @@ const Option = (props) => {
       const option = e.target.elements.option.value.trim();
       const error = this.props.handleAddOption(option)
       if (!error) e.target.elements.option.value = ''
-      this.setState (()=> {
-        return {error}
-      });
+      this.setState (()=> ({error}));
     }
     render () {
       return (
@@ -188,16 +194,5 @@ const Option = (props) => {
   }
   
   ReactDOM.render (<IndicisionApp />, document.getElementById('app'));
-  
-  // // stateless component
-  // const User = (props) => {
-  //   return (
-  //     <div>
-  //       <p>Name: {props.name}</p>
-  //       <p>Age: {props.age}</p>
-  //     </div>
-  //   )
-  // }
-  
-  // ReactDOM.render (<User name='amit' age='12' />, document.getElementById('app'));
+ 
   
