@@ -151,7 +151,7 @@ var Header = function Header(props) {
 // default props can be defind for class based as well as functional components
 // just by definig the objects
 Header.defaultProps = {
-  title: '~ Indecision ~'
+  title: 'Indecision'
 };
 
 var Action = function Action(props) {

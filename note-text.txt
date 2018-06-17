@@ -12,3 +12,6 @@ babel playground/counter-example.js  --out-file=public/scripts/app-out.js --pres
 
 localStorage is string based key-valye pair storage in browser and it persists browser
 refresh
+
+// webpack
+1. remove babel-cli and live-server from global installation
