@@ -4,7 +4,7 @@ module.exports = {
     mode: 'development',
     entry :'./src/app.js',
     output: {
-        path: path.join(__dirname, 'public', 'scripts'),
+        path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
     // loaders
@@ -16,7 +16,10 @@ module.exports = {
         }]
 
     },
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map',
+    devServer:{
+        contentBase: path.join(__dirname, 'public')
+    }
 };
 
 // loaders
