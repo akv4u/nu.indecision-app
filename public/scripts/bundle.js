@@ -93,7 +93,7 @@
 /*! no exports provided */
 /***/ (function(module, exports) {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (5:17)\\nYou may need an appropriate loader to handle this file type.\\n| import IndicisionApp from '../components/IndecisionApp'\\r\\n| \\r\\n> ReactDOM.render (<IndicisionApp />, document.getElementById('app'));\\r\\n| \");\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("throw new Error(\"Module parse failed: Unexpected token (6:17)\\nYou may need an appropriate loader to handle this file type.\\n| import './styles/styles.css'\\r\\n| \\r\\n> ReactDOM.render (<IndicisionApp />, document.getElementById('app'));\\r\\n| \");\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ })
 

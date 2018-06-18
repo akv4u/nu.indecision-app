@@ -15,3 +15,5 @@ refresh
 
 // webpack
 1. remove babel-cli and live-server from global installation
+
+// partials starts with _<file>.scss
